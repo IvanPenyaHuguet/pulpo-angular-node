@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  mongodb:
+    container_name: mongodb
+    image: bitnami/mongodb:latest
+    environment:
+      - MONGODB_USERNAME=${NX_DB_USER}
+      - MONGODB_ROOT_PASSWORD=${NX_DB_PASSWORD}
+      - MONGODB_PASSWORD=${NX_DB_PASSWORD}
+      - MONGODB_DATABASE=${NX_DB_NAME}
+    ports:
+      - 27017:27017
+    expose:
+      - 27017
+    volumes:
+      - /tmp/mongo:/bitnami/mongodb
+    networks:
+      - mongo-compose-network
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 8081:8081
+    restart: always
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+      - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${NX_DB_PASSWORD}
+    depends_on:
+      - mongodb
+    links:
+      - mongodb
+    networks:
+      - mongo-compose-network
+
+networks:
+  mongo-compose-network:
+    driver: bridge

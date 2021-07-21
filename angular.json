@@ -119,6 +119,56 @@
           }
         }
       }
+    },
+    "pulposerver": {
+      "root": "apps/pulposerver",
+      "sourceRoot": "apps/pulposerver/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/pulposerver",
+            "main": "apps/pulposerver/src/main.ts",
+            "tsConfig": "apps/pulposerver/tsconfig.app.json",
+            "assets": ["apps/pulposerver/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/pulposerver/src/environments/environment.ts",
+                  "with": "apps/pulposerver/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "pulposerver:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/pulposerver/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/pulposerver"],
+          "options": {
+            "jestConfig": "apps/pulposerver/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

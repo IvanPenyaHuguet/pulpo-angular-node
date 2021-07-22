@@ -9,7 +9,9 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/pulpoapp",
             "index": "apps/pulpoapp/src/index.html",
@@ -19,9 +21,16 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "apps/pulpoapp/src/favicon.ico",
-              "apps/pulpoapp/src/assets"
+              "apps/pulpoapp/src/assets",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
             ],
-            "styles": ["apps/pulpoapp/src/styles.scss"],
+            "styles": [
+              "apps/pulpoapp/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -86,7 +95,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/pulpoapp"],
+          "outputs": [
+            "coverage/apps/pulpoapp"
+          ],
           "options": {
             "jestConfig": "apps/pulpoapp/jest.config.js",
             "passWithNoTests": true
@@ -115,7 +126,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/pulpoapp-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/pulpoapp-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -127,12 +140,16 @@
       "architect": {
         "build": {
           "builder": "@nrwl/node:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/pulposerver",
             "main": "apps/pulposerver/src/main.ts",
             "tsConfig": "apps/pulposerver/tsconfig.app.json",
-            "assets": ["apps/pulposerver/src/assets"]
+            "assets": [
+              "apps/pulposerver/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -151,18 +168,23 @@
         "serve": {
           "builder": "@nrwl/node:execute",
           "options": {
-            "buildTarget": "pulposerver:build"
+            "buildTarget": "pulposerver:build",
+            "port": 7777
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/pulposerver/**/*.ts"]
+            "lintFilePatterns": [
+              "apps/pulposerver/**/*.ts"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/pulposerver"],
+          "outputs": [
+            "coverage/apps/pulposerver"
+          ],
           "options": {
             "jestConfig": "apps/pulposerver/jest.config.js",
             "passWithNoTests": true

@@ -1,10 +1,10 @@
 <p align="center">    
-    <h3 align="center">Laboratory Application for Reagents and Standards (LARS)</h3>
+    <h3 align="center">MEAN Stack with Ionic</h3>
     <p align="center">       
         <br />       
-        <a href="https://github.com/IvanPenyaHuguet/ProyectoFinalDAW/issues">Report Bug</a>
+        <a href="https://github.com/IvanPenyaHuguet/pulpo-angular-nodeissues">Report Bug</a>
         <br />
-        <a href="https://github.com/IvanPenyaHuguet/ProyectoFinalDAW/issues">Request Feature</a>
+        <a href="https://github.com/IvanPenyaHuguet/pulpo-angular-nodeissues">Request Feature</a>
     </p>
 </p>
 
@@ -63,6 +63,7 @@ Top innovative technologies of the MEAN stack with ionic for mobile applications
    ```sh
    npx nx run-many --target=serve --projects=pulpoapp,pulposerver --parallel
    ```
+   If it fails because the dabatase has been not created (sometimes docker fails), then you can create it manually with command or mongo-express, the db name is: pulpodb
 5. Cypress (not tests implemented yet) can be launch with, you might need to install if it throws an error.
    ```sh
    npx nx e2e

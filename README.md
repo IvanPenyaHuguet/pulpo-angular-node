@@ -63,6 +63,7 @@ Top innovative technologies of the MEAN stack with ionic for mobile applications
    ```sh
    npx nx run-many --target=serve --projects=pulpoapp,pulposerver --parallel
    ```
+   If it fails because the dabatase has been not created (sometimes docker fails), then you can create it manually with command or mongo-express, the db name is: pulpodb
 5. Cypress (not tests implemented yet) can be launch with, you might need to install if it throws an error.
    ```sh
    npx nx e2e

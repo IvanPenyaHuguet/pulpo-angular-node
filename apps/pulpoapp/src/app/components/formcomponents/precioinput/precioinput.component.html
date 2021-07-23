@@ -1,0 +1,21 @@
+<ng-container [formGroup]="service">
+  <ion-label position="stacked">Precio</ion-label>
+  <ion-input
+    placeholder="1233"
+    type="number"
+    formControlName="price"
+    fill="outline"
+  ></ion-input>
+  <pulpoapp-errormessage
+    *ngIf="
+      service.hasError('required', 'price') && service.controls['price'].touched
+    "
+    [message]="'Precio requerido'"
+  ></pulpoapp-errormessage>
+  <pulpoapp-errormessage
+    *ngIf="
+      service.hasError('pattern', 'price') && service.controls['price'].touched
+    "
+    [message]="'Números con dos decimales'"
+  ></pulpoapp-errormessage>
+</ng-container>

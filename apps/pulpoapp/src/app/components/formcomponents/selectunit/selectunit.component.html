@@ -1,0 +1,14 @@
+<ng-container [formGroup]="service">
+  <ion-label position="stacked">Unidad</ion-label>
+  <ion-select value="Metro" formControlName="units" fill="outline">
+    <ion-select-option value="Metro">Metro</ion-select-option>
+    <ion-select-option value="Hora">Hora</ion-select-option>
+    <ion-select-option value="Unidad">Unidad</ion-select-option>
+  </ion-select>
+  <pulpoapp-errormessage
+    *ngIf="
+      service.hasError('required', 'units') && service.controls['units'].touched
+    "
+    [message]="'Unidad requerida'"
+  ></pulpoapp-errormessage>
+</ng-container>

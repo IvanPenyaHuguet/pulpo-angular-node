@@ -1,0 +1,22 @@
+<ng-container [formGroup]="service">
+  <ion-label position="stacked">Titulo</ion-label>
+  <ion-input
+    placeholder="Titulo del producto"
+    type="text"
+    formControlName="title"
+    fill="outline"
+  ></ion-input>
+  <pulpoapp-errormessage
+    *ngIf="
+      service.hasError('required', 'title') && service.controls['title'].touched
+    "
+    [message]="'Título requerido'"
+  ></pulpoapp-errormessage>
+  <pulpoapp-errormessage
+    *ngIf="
+      service.hasError('maxlength', 'title') &&
+      service.controls['title'].touched
+    "
+    [message]="'Máximo 20 carácteres'"
+  ></pulpoapp-errormessage>
+</ng-container>

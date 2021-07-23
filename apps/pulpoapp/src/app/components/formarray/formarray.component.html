@@ -1,0 +1,53 @@
+<form [formGroup]="group" (ngSubmit)="onSubmit()">
+  <ion-list formArrayName="services">
+    <ion-item
+      *ngFor="let service of getServices().controls; let i = index"
+      [formGroupName]="i"
+    >
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6"
+            ><pulpoapp-tituloinput
+              [service]="$any(service)"
+            ></pulpoapp-tituloinput
+          ></ion-col>
+          <ion-col>
+            <pulpoapp-precioinput
+              [service]="$any(service)"
+            ></pulpoapp-precioinput>
+          </ion-col>
+          <ion-col
+            ><pulpoapp-selectunit
+              [service]="$any(service)"
+            ></pulpoapp-selectunit
+          ></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+  <ion-button
+    expand="block"
+    fill="outline"
+    color="medium"
+    (click)="addService()"
+  >
+    + Añadir otro servicio
+  </ion-button>
+  <ion-button
+    expand="block"
+    fill="outline"
+    color="medium"
+    (click)="deleteService()"
+  >
+    - Quitar servicio
+  </ion-button>
+  <ion-fab vertical="bottom" horizontal="center">
+    <ion-button
+      type="submit"
+      [disabled]="!group.valid"
+      expand="full"
+      color="primary"
+      >Guardar servicios</ion-button
+    >
+  </ion-fab>
+</form>

@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { ServicesService } from '../../services/ExportServices';
 
 @Component({
@@ -20,7 +21,8 @@ export class FormarrayComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private servicesService: ServicesService,
-    private router: Router
+    private router: Router,
+    public alertController: AlertController
   ) {}
 
   addService(): void {
@@ -48,10 +50,23 @@ export class FormarrayComponent implements OnInit {
   onSubmit(): void {
     if (this.group.valid) {
       this.servicesService.saveService(this.group.value.services).subscribe(
-        (res) => {
+        async (res) => {
+          const alert = await this.alertController.create({
+            header: 'Éxito',
+            subHeader: 'Guardado con éxito.',
+            buttons: ['OK'],
+          });
+          await alert.present();
           this.router.navigate(['/services']);
         },
-        (err) => console.error(err)
+        async (err) => {
+          const alert = await this.alertController.create({
+            header: 'ERROR',
+            subHeader: 'Error inesperado, vuelve a intetarlo',
+            buttons: ['OK'],
+          });
+          await alert.present();
+        }
       );
     }
   }

@@ -1,105 +1,77 @@
+<p align="center">    
+    <h3 align="center">Laboratory Application for Reagents and Standards (LARS)</h3>
+    <p align="center">       
+        <br />       
+        <a href="https://github.com/IvanPenyaHuguet/ProyectoFinalDAW/issues">Report Bug</a>
+        <br />
+        <a href="https://github.com/IvanPenyaHuguet/ProyectoFinalDAW/issues">Request Feature</a>
+    </p>
+</p>
 
+<!-- TABLE OF CONTENTS -->
 
-# Pulpoapp
+## Table of Contents
 
-This project was generated using [Nx](https://nx.dev).
+- [Table of Contents](#table-of-contents)
+- [About The Project](#about-the-project)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+- [Contact](#contact)
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+<!-- ABOUT THE PROJECT -->
 
-🔎 **Smart, Extensible Build Framework**
+## About The Project
 
-## Quick Start & Documentation
+This project is a sample application for pulpo, it is a monorepo with nx with two packages client with angular and backend with nodejs and mongodb database (MEAN Stack). Monorepo is good for scalability, because it separates front and back code, while keeps all the programmers working on the same repository.
+Because both packages are in JS node_modules and some parts of code are reusable.
 
-[Nx Documentation](https://nx.dev/angular)
-
-[10-minute video showing all Nx features](https://nx.dev/angular/getting-started/what-is-nx)
-
-[Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
-
-## Adding capabilities to your workspace
-
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
-
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
-
-Below are our core plugins:
+### Built With
 
 - [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
+- [Ionic](https://ionicframework.com)
+- [Nx](https://nx.dev)
+- [Node](https://nodejs.org/es/)
+- [Express](https://expressjs.com/es/)
+- [MongoDB](https://www.mongodb.com/es)
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+Top innovative technologies of the MEAN stack with ionic for mobile applications.
 
-## Generate an application
+<!-- GETTING STARTED -->
 
-Run `ng g @nrwl/angular:app my-app` to generate an application.
+## Getting Started
 
-> You can use any of the plugins above to generate applications as well.
+0. Requisites: You need npm, docker, and libraries from cypress if you want the e2e testing.
+1. Clone the repo
+2. Initialize the docker container of db. But first if you are in windows modify
+   the docker-compose.yml file, deleting the volume or changing it.
+   If you are in linux do the same or execute.
+   ```sh
+   mkdir /tmp/mongo
+   ```
+   ```sh
+   sudo chown -R 1001 /tmp/mongo
+   ```
+   Start docker container:
+   ```sh
+   docker-compose up -d
+   ```
+3. Now install dependencies with:
+   ```sh
+   npm install
+   ```
+4. Start dev mode with:
+   ```sh
+   npx nx run-many --target=serve --projects=pulpoapp,pulposerver --parallel
+   ```
+5. Cypress (not tests implemented yet) can be launch with, you might need to install if it throws an error.
+   ```sh
+   npx nx e2e
+   ```
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+<!-- CONTACT -->
 
-## Generate a library
+## Contact
 
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
+Iván Peña Huguet - ivanpenyahuguet@gmail.com
 
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@pulpoapp/mylib`.
-
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-
-
-
-
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+Project Link: [LINK](https://github.com/IvanPenyaHuguet/pulpo-angular-node)
